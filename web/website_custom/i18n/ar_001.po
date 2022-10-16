@@ -1,0 +1,707 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* website_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0-20220817\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-04 13:19+0000\n"
+"PO-Revision-Date: 2022-10-04 13:19+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.confirmation_date
+msgid "&amp; Shipping"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.communcation_num
+msgid "<b> :رقـم الطلـب  </b>"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.confirmation_date
+msgid "<b>Shipping: </b>"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.address_form
+msgid ""
+"<i class=\"fa fa-chevron-left\"/>\n"
+"                                            <span>Back</span>"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.confirmation_date
+msgid "<i class=\"fa fa-print\"/> Print"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.product
+msgid "<i class=\"fa fa-shopping-cart\"/> تـقديـم طلـب"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.process_checkout
+msgid ""
+"<span class=\"\">Process Checkout</span>\n"
+"                                        <span class=\"fa fa-chevron-right\"/>"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.process_checkout
+msgid "<span class=\"\">تقـديـم طلـب</span>"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.process_checkout
+msgid ""
+"<span class=\"fa fa-chevron-left\"/>\n"
+"                                            <span class=\"\">Continue Shopping</span>"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.process_checkout
+msgid ""
+"<span class=\"fa fa-chevron-left\"/>\n"
+"                                        Continue<span class=\"d-none d-md-inline\"> Shopping</span>"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.confirmation_date
+msgid "<span>Confirmed</span>"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.address_form
+msgid ""
+"<span>Next</span>\n"
+"                                            <i class=\"fa fa-chevron-right\"/>"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.confirmation_date
+msgid "<span>Order</span>"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.communcation_num
+msgid "<span>Your payment has been authorized.</span>"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.process_checkout_2
+msgid "<span>تقـديـم طلـب</span>"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.confirmation_date
+msgid "<strong> :بيـانـات الطلـب</strong>"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.confirmation_date
+msgid "<strong>Total:</strong>"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__advertising_number
+msgid "Advertising number"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_sale_order_offer__value
+msgid "Amount"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields.selection,name:website_custom.selection__sale_order__state__approved
+#: model_terms:ir.ui.view,arch_db:website_custom.sale_order_form_custom
+msgid "Approved"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.address_form
+msgid "Be aware!"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.confirmation_date
+msgid "Billing"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_product_product__product_brand_id
+#: model:ir.model.fields,field_description:website_custom.field_product_template__product_brand_id
+#: model:ir.model.fields,field_description:website_custom.field_sale_order_line__product_brand_id
+msgid "Brand"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.address_form
+msgid "City"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.process_checkout
+msgid "Click here"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__code
+msgid "Code / Commercial Register"
+msgstr "الرمز / السجل التجاري"
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.address_form
+msgid "Country"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.address_form
+msgid "Country..."
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__create_uid
+#: model:ir.model.fields,field_description:website_custom.field_sale_order_offer__create_uid
+#: model:ir.model.fields,field_description:website_custom.field_website_product_brand__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__create_date
+#: model:ir.model.fields,field_description:website_custom.field_sale_order_offer__create_date
+#: model:ir.model.fields,field_description:website_custom.field_website_product_brand__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model,name:website_custom.model_website_product_brand
+msgid "CustomSale"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__delegate_name
+msgid "Delegate Name"
+msgstr "اسم المفوض"
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__display_name
+#: model:ir.model.fields,field_description:website_custom.field_product_template__display_name
+#: model:ir.model.fields,field_description:website_custom.field_sale_order__display_name
+#: model:ir.model.fields,field_description:website_custom.field_sale_order_line__display_name
+#: model:ir.model.fields,field_description:website_custom.field_sale_order_offer__display_name
+#: model:ir.model.fields,field_description:website_custom.field_website_product_brand__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.communcation_num
+msgid "Edit"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__email
+#: model_terms:ir.ui.view,arch_db:website_custom.address_form
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__name
+msgid "Financial Institution"
+msgstr "مؤسسة مالية"
+
+#. module: website_custom
+#: model:ir.actions.act_window,name:website_custom.manger_financial_institution_action_window
+#: model:ir.actions.act_window,name:website_custom.manger_financial_institution_action_window1
+#: model:ir.model.fields,field_description:website_custom.field_sale_order_offer__name
+#: model:ir.ui.menu,name:website_custom.all_financial_institution_menu_root
+msgid "Financial Institutions"
+msgstr "المؤسسات المالية"
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.financial_institution_form
+msgid "Financial's Name"
+msgstr "مؤسسة مالية"
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__message_follower_ids
+msgid "Followers"
+msgstr "متابعون"
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__id
+#: model:ir.model.fields,field_description:website_custom.field_product_template__id
+#: model:ir.model.fields,field_description:website_custom.field_sale_order__id
+#: model:ir.model.fields,field_description:website_custom.field_sale_order_line__id
+#: model:ir.model.fields,field_description:website_custom.field_sale_order_offer__id
+#: model:ir.model.fields,field_description:website_custom.field_website_product_brand__id
+msgid "ID"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,help:website_custom.field_financial_institution__message_needaction
+#: model:ir.model.fields,help:website_custom.field_financial_institution__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,help:website_custom.field_financial_institution__message_has_error
+#: model:ir.model.fields,help:website_custom.field_financial_institution__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields.selection,name:website_custom.selection__sale_order__state__progress
+msgid "In Progress"
+msgstr "في تَقَدم"
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_sale_order__product_brand_ids
+#: model:ir.ui.menu,name:website_custom.qardy_installment_menu_1_list
+#: model_terms:ir.ui.view,arch_db:website_custom.sale_order_form_custom
+msgid "Installment"
+msgstr "تقسيط"
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.product
+msgid "Installment:"
+msgstr "تقسيط"
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: website_custom
+#: code:addons/website_custom/models/models.py:0
+#, python-format
+msgid "It is forbidden to modify a sales order which is not in draft status."
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution____last_update
+#: model:ir.model.fields,field_description:website_custom.field_product_template____last_update
+#: model:ir.model.fields,field_description:website_custom.field_sale_order____last_update
+#: model:ir.model.fields,field_description:website_custom.field_sale_order_line____last_update
+#: model:ir.model.fields,field_description:website_custom.field_sale_order_offer____last_update
+#: model:ir.model.fields,field_description:website_custom.field_website_product_brand____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__write_uid
+#: model:ir.model.fields,field_description:website_custom.field_sale_order_offer__write_uid
+#: model:ir.model.fields,field_description:website_custom.field_website_product_brand__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__write_date
+#: model:ir.model.fields,field_description:website_custom.field_sale_order_offer__write_date
+#: model:ir.model.fields,field_description:website_custom.field_website_product_brand__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__License_Num
+msgid "License No  Master Username"
+msgstr "رقم الترخيص "اسم المستخدم الرئيسي ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.address_form
+msgid "Log In"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__logo
+msgid "Logo"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "المرفق الرئيسي"
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__message_has_error
+msgid "Message Delivery error"
+msgstr "خطأ في تسليم الرسالة"
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__message_ids
+msgid "Messages"
+msgstr "رسائل"
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_website_product_brand__name
+#: model_terms:ir.ui.view,arch_db:website_custom.address_form
+#: model_terms:ir.ui.view,arch_db:website_custom.portal_openacademy_courses
+msgid "Name"
+msgstr "اسم"
+
+#. module: website_custom
+#: model:ir.model.fields.selection,name:website_custom.selection__sale_order__state__new
+msgid "New"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__message_needaction_counter
+msgid "Number of Actions"
+msgstr "عدد الإجراءات"
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,help:website_custom.field_financial_institution__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "عدد الرسائل التي تتطلب اتخاذ إجراء"
+
+#. module: website_custom
+#: model:ir.model.fields,help:website_custom.field_financial_institution__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "عدد الرسائل التي بها خطأ في التسليم"
+
+#. module: website_custom
+#: model:ir.model.fields,help:website_custom.field_financial_institution__message_unread_counter
+msgid "Number of unread messages"
+msgstr "عدد الرسائل غير المقروءة"
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_sale_order__offer
+#: model:website.menu,name:website_custom.menu_openacademy_courses
+msgid "Offer"
+msgstr "عرض"
+
+#. module: website_custom
+#: model:website.menu,name:website_custom.menu_openacademy_main
+#: model_terms:ir.ui.view,arch_db:website_custom.portal_my_home_menu_course
+#: model_terms:ir.ui.view,arch_db:website_custom.portal_my_home_sale_offer
+#: model_terms:ir.ui.view,arch_db:website_custom.portal_openacademy_courses
+#: model_terms:ir.ui.view,arch_db:website_custom.portal_openacademy_courses1
+msgid "Offers"
+msgstr "عروض"
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.communcation_num
+msgid "Or scan me with your banking app."
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.process_checkout_2
+msgid "Order Total"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.ui.menu,name:website_custom.all_orders_menu_root
+msgid "Orders"
+msgstr "الطلبات "
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_sale_order_offer__partner_id
+msgid "Partner"
+msgstr "شريك"
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__password
+msgid "Password"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.address_form
+msgid "Phone"
+msgstr "هاتـف"
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.process_checkout
+msgid "Please proceed your current cart."
+msgstr "الرجاء متابعة عربة التسوق الحالية الخاصة بك"
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.confirmation_date
+msgid "Print"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model,name:website_custom.model_product_template
+msgid "Product Template"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.sale_order_form_custom
+msgid "Progress"
+msgstr "تقدم"
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.portal_openacademy_courses
+msgid "Quotation"
+msgstr "الطلبات"
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_sale_order_offer__order_id
+msgid "Quotations"
+msgstr "الطلبات"
+
+#. module: website_custom
+#: model:ir.model.fields.selection,name:website_custom.selection__sale_order__state__reject
+#: model_terms:ir.ui.view,arch_db:website_custom.sale_order_form_custom
+msgid "Reject"
+msgstr "رفض"
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.payment_add
+msgid "Return to Cart"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model,name:website_custom.model_sale_order
+msgid "Sales Order"
+msgstr "طلب المبيعات"
+
+#. module: website_custom
+#: model:ir.model,name:website_custom.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "خط طلب المبيعات"
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.address_form
+msgid ""
+"Ship to the same address\n"
+"                                                    <span class=\"ship_to_other text-muted\" style=\"display: none\">&amp;nbsp;(<i>Your shipping address will be requested later) </i></span>"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.address_form
+msgid "Shipping Address"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.confirmation_date
+msgid "Sign Up"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.address_form
+msgid "State / Province"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.address_form
+msgid "State / Province..."
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_sale_order__state
+msgid "Status"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.address_form
+msgid "Street 2"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.address_form
+msgid "Street <span class=\"d-none d-md-inline\"> and Number</span>"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.confirmation_date
+msgid "Thank you for your order."
+msgstr ""
+
+#. module: website_custom
+#: code:addons/website_custom/models/models.py:0
+#, python-format
+msgid ""
+"The given combination does not exist therefore it cannot be added to cart."
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.portal_openacademy_courses
+msgid "There are currently no offers available."
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.process_checkout
+msgid "This is your current cart."
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.address_form
+msgid "True"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,help:website_custom.field_financial_institution__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.address_form
+msgid ""
+"You are editing your <b>billing and shipping</b> addresses at the same time!<br/>\n"
+"                                            If you want to modify your shipping address, create a"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.address_form
+msgid "Your Address"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.address_form
+msgid ""
+"Your Address\n"
+"                                        <small> or </small>"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.process_checkout
+msgid "Your previous cart has already been completed."
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.address_form
+msgid "Zip Code"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.module.category,name:website_custom.module_category_website_custom
+#: model:res.groups,name:website_custom.group_warning_website
+msgid "financial institution"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_sale_order__financial_institutions
+msgid "financial institutions"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model,name:website_custom.model_financial_institution
+#: model:ir.model.fields,field_description:website_custom.field_product_product__financial_institution
+#: model:ir.model.fields,field_description:website_custom.field_product_template__financial_institution
+#: model:ir.model.fields,field_description:website_custom.field_sale_order_line__financial_institution
+msgid "financial_institution"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.process_checkout
+msgid "if you want to merge your previous cart into current cart."
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.process_checkout
+msgid ""
+"if you want to restore your previous cart. Your current cart will be "
+"replaced with your previous cart."
+msgstr ""
+
+#. module: website_custom
+#: model:ir.model.fields,field_description:website_custom.field_financial_institution__phone
+msgid "mobile number"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.address_form
+msgid "new address"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.actions.act_window,name:website_custom.sale_order_offer_action_window
+#: model:ir.ui.menu,name:website_custom.sale_order_offer_menu_1_list
+msgid "offers"
+msgstr ""
+
+#. module: website_custom
+#: model:ir.actions.act_window,name:website_custom.qardy_installment_action_window
+msgid "qardy Installment"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.financial_institution_form
+msgid "quotations"
+msgstr ""
+
+#. module: website_custom
+#: code:addons/website_custom/models/financial_institution.py:0
+#, python-format
+msgid "sale.order"
+msgstr ""
+
+#. module: website_custom
+#: code:addons/website_custom/models/models.py:0
+#: model:ir.model,name:website_custom.model_sale_order_offer
+#, python-format
+msgid "sale_order_offer"
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.portal_openacademy_courses1
+msgid "thanks for accept your offer"
+msgstr "شكرا لقبول عرضي"
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.confirmation_date
+msgid "to follow your order."
+msgstr ""
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.portal_openacademy_courses
+msgid "value"
+msgstr "القيمة"
+
+#. module: website_custom
+#: model_terms:ir.ui.view,arch_db:website_custom.payment_add
+msgid "تـقديـم الطلـب"
+msgstr ""

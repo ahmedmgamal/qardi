@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_website_product_brand,website.product.brand,model_website_product_brand,,1,1,1,1
+access_financial_institution,financial.institution,model_financial_institution,base.group_user,1,1,1,1
+access_sale_order_offer,sale.order.offer,model_sale_order_offer,base.group_user,1,1,1,1

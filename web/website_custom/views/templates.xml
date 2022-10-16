@@ -1,0 +1,442 @@
+<odoo>
+    <data>
+
+
+        <template id="product" inherit_id="website_sale.product">
+            <xpath expr="//a[@id='add_to_cart']" position="replace">
+                <a role="button" id="add_to_cart" class="btn btn-primary btn-lg mt16 js_check_product a-submit d-block d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"/> تـقديـم طلـب</a>
+            </xpath>
+
+            <xpath expr="//a[@id='add_to_cart']" position="before">
+                <div class="form-group field-login">
+                    <label for="product_brand_id" class="col-form-label">Installment:</label>
+                    <br/>
+                    <select style="width:250px;" class="product_brand_id" id="product_brand_id" name="product_brand_id">
+                        <t t-foreach="brands" t-as="brand">
+                            <option t-att-value="brand.get('id')" value="Doe">
+                                <span t-esc="brand.get('name')"  />
+                            </option>
+                        </t>
+                    </select>
+
+                </div>
+<!--                <div class="form-group field-login">-->
+<!--                    <label for="financial_institution" class="col-form-label">Financial institutions</label>-->
+<!--                    <br/>-->
+<!--                    <select style="width:250px;" class="financial_institution" id="financial_institution" name="financial_institution">-->
+<!--                        <t t-foreach="financial_institutions" t-as="financial_institution">-->
+<!--                            <option t-att-value="financial_institution.get('id')">-->
+<!--                                <span t-esc="financial_institution.get('name')"/>-->
+<!--                            </option>-->
+<!--                        </t>-->
+<!--                    </select>-->
+
+<!--                </div>-->
+            </xpath>
+
+
+        </template>
+        <template id="payment_add" inherit_id="website_sale.payment">
+            <xpath expr="//div[@id='payment_method']" position="replace">
+                <div id="payment_method" class="mt-3" t-if="(acquirers or tokens) and website_sale_order.amount_total">
+<!--                                <h3 class="mb24">Pay with </h3>-->
+                                <t t-call="payment.payment_tokens_list">
+                                    <t t-set="mode" t-value="'payment'"/>
+                                    <t t-set="submit_txt">تـقديـم الطلـب</t>
+                                    <t t-set="icon_right" t-value="1"/>
+                                    <t t-set="icon_class" t-value="'fa-chevron-right'"/>
+                                    <t t-set="submit_class" t-value="'btn btn-primary'"/>
+                                    <t t-set="pms" t-value="tokens"/>
+                                    <t t-set="form_action" t-value="'/shop/payment/token'"/>
+                                    <t t-set="prepare_tx_url" t-value="'/shop/payment/transaction/'"/>
+                                    <t t-set="partner_id" t-value="partner"/>
+
+                                    <t t-set="back_button_icon_class" t-value="'fa-chevron-left'"/>
+                                    <t t-set="back_button_txt">Return to Cart</t>
+                                    <t t-set="back_button_class" t-value="'btn btn-secondary'"/>
+                                    <t t-set="back_button_link" t-value="'/shop/cart'"/>
+                                </t>
+                            </div>
+
+            </xpath>
+
+        </template>
+        <template id="confirmation_date" inherit_id="website_sale.confirmation">
+                <xpath expr="//div[@id='wrap']" position="replace">
+                     <div id="wrap">
+                <div class="container oe_website_sale py-2">
+                    <h1><span>Order</span> <em t-field="order.name" /> <t t-if="order.state == 'sale'"><span>Confirmed</span></t></h1>
+
+                    <div class="row">
+                        <div class="col-12 col-xl">
+                            <div class="oe_cart">
+                                <t t-set="payment_tx_id" t-value="order.get_portal_last_transaction()"/>
+                                <t t-if="payment_tx_id.state == 'done'">
+                                    <div class="thanks_msg">
+                                        <h2>Thank you for your order.
+                                            <a role="button" class="btn btn-primary d-none d-md-inline-block" href="/shop/print" target="_blank" aria-label="Print" title="Print"><i class="fa fa-print"></i> Print</a>
+                                        </h2>
+                                    </div>
+                                </t>
+                                <t t-if="request.env['res.users']._get_signup_invitation_scope() == 'b2c' and request.website.is_public_user()">
+                                    <p class="alert alert-info mt-3" role="status">
+                                        <a role="button" t-att-href='order.partner_id.signup_prepare() and order.partner_id.with_context(relative_url=True).signup_url' class='btn btn-primary'>Sign Up</a>
+                                         to follow your order.
+                                    </p>
+                                </t>
+                                <div class="oe_structure clearfix mt-3" id="oe_structure_website_sale_confirmation_1"/>
+                                <h3 class="text-right mt-3">
+                                    <strong> :بيـانـات الطلـب</strong>
+                                </h3>
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="2">
+                                                <t t-esc="order.get_portal_last_transaction().acquirer_id.name" />
+                                            </td>
+                                            <td class="text-right" width="100">
+                                                <strong>Total:</strong>
+                                            </td>
+                                            <td class="text-right" width="100">
+                                                <strong t-field="order.amount_total" t-options="{'widget': 'monetary', 'display_currency': order.pricelist_id.currency_id}" />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <t t-call="website_sale.payment_confirmation_status"/>
+                                <div class="card mt-3">
+                                  <div class="card-body">
+                                    <t t-set="same_shipping" t-value="bool(order.partner_shipping_id==order.partner_id or only_services)" />
+                                    <div><b>Billing <t t-if="same_shipping and not only_services"> &amp; Shipping</t>: </b><span t-esc='order.partner_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')" class="address-inline"/></div>
+                                    <div t-if="not same_shipping and not only_services" groups="sale.group_delivery_invoice_address"><b>Shipping: </b><span t-esc='order.partner_shipping_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"  class="address-inline"/></div>
+                                  </div>
+                                </div>
+                                <div class="oe_structure mt-3" id="oe_structure_website_sale_confirmation_2"/>
+                            </div>
+                        </div>
+                        <div class="col-12 col-xl-auto">
+                            <t t-set="website_sale_order" t-value="order"/>
+                            <t t-call="website_sale.cart_summary">
+                                <t t-set="hide_coupon" t-value="1"/>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure" id="oe_structure_website_sale_confirmation_3"/>
+            </div>
+
+                </xpath>
+
+        </template>
+        <template id="communcation_num" inherit_id="website_sale.payment_confirmation_status">
+            <xpath expr="//div[hasclass('oe_website_sale_tx_status')]" position="replace">
+                <div class="oe_website_sale_tx_status mt-3" t-att-data-order-id="order.id">
+                    <t t-set="payment_tx_id" t-value="order.get_portal_last_transaction()"/>
+                    <div t-attf-class="card #{
+                        (payment_tx_id.state == 'pending' and 'bg-info') or
+                        (payment_tx_id.state == 'done' and 'alert-success') or
+                        (payment_tx_id.state == 'authorized' and 'alert-success') or
+                        'bg-danger'}">
+                        <div class="card-header">
+                            <a role="button" groups="base.group_system" class="btn btn-sm btn-link text-white float-right" target="_blank" aria-label="Edit" title="Edit"
+                                    t-att-href="'/web#model=%s&amp;id=%s&amp;action=%s&amp;view_type=form' % ('payment.acquirer', payment_tx_id.acquirer_id.id, 'payment.action_payment_acquirer')">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <t t-if="payment_tx_id.state == 'pending'">
+                                <t t-raw="payment_tx_id.acquirer_id.pending_msg"/>
+                            </t>
+                            <t t-if="payment_tx_id.state == 'done'">
+                                <span t-if='payment_tx_id.acquirer_id.done_msg' t-raw="payment_tx_id.acquirer_id.done_msg"/>
+                            </t>
+                            <t t-if="payment_tx_id.state == 'cancel'">
+                                <t t-raw="payment_tx_id.acquirer_id.cancel_msg"/>
+                            </t>
+                            <t t-if="payment_tx_id.state == 'authorized'">
+                                <span>Your payment has been authorized.</span>
+                            </t>
+                            <t t-if="payment_tx_id.state == 'error'">
+                                <span t-esc="payment_tx_id.state_message"/>
+                            </t>
+                        </div>
+                        <div t-if="payment_tx_id.acquirer_id.provider == 'transfer' and order.reference" class="card-body ">
+                           <span t-esc='order.reference'/> <b> :رقـم الطلـب  </b>
+                        </div>
+
+                        <div t-if="payment_tx_id.acquirer_id.qr_code and (payment_tx_id.acquirer_id.provider == 'transfer')">
+                            <t t-set="qr_code" t-value="payment_tx_id.acquirer_id.journal_id.bank_account_id.build_qr_code_base64(order.amount_total,payment_tx_id.reference, None, payment_tx_id.currency_id, payment_tx_id.partner_id)"/>
+                            <div class="card-body" t-if="qr_code">
+                                <h3>Or scan me with your banking app.</h3>
+                                <img class="border border-dark rounded" t-att-src="qr_code"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+
+        </template>
+         <template id="process_checkout" inherit_id="website_sale.cart">
+                <xpath expr="//div[@id='wrap']" position="replace">
+                    <div id="wrap">
+                    <div class="container oe_website_sale py-2">
+                        <div class="row">
+                            <div class="col-12">
+                                <t t-call="website_sale.wizard_checkout">
+                                    <t t-set="step" t-value="10" />
+                                </t>
+                            </div>
+                            <div class="col-12 col-xl-8 oe_cart">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div t-if="abandoned_proceed or access_token" class="mt8 mb8 alert alert-info" role="alert"> <!-- abandoned cart choices -->
+                                            <t t-if="abandoned_proceed">
+                                                <p>Your previous cart has already been completed.</p>
+                                                <p t-if="website_sale_order">Please proceed your current cart.</p>
+                                            </t>
+                                            <t t-if="access_token">
+                                                <p>This is your current cart.</p>
+                                                <p>
+                                                    <strong><a t-attf-href="/shop/cart/?access_token=#{access_token}&amp;revive=squash">Click here</a></strong> if you want to restore your previous cart. Your current cart will be replaced with your previous cart.</p>
+                                                <p>
+                                                    <strong><a t-attf-href="/shop/cart/?access_token=#{access_token}&amp;revive=merge">Click here</a></strong> if you want to merge your previous cart into current cart.
+                                                </p>
+                                            </t>
+                                        </div>
+                                        <t t-call="website_sale.cart_lines" />
+                                        <div class="clearfix" />
+                                        <a role="button" href="/shop" class="btn btn-secondary mb32 d-none d-xl-inline-block">
+                                            <span class="fa fa-chevron-left" />
+                                            <span class="">Continue Shopping</span>
+                                        </a>
+                                        <a role="button" t-if="website_sale_order and website_sale_order.website_order_line"
+                                           class="btn btn-primary float-right d-none d-xl-inline-block" href="/shop/checkout?express=1">
+                                            <span class="">تقـديـم طلـب</span>
+    <!--                                        <h3>rrrrrrrrrrrrrrrrr</h3>-->
+                                            <span class="fa fa-chevron-right" />
+                                        </a>
+                                        <div class="oe_structure" id="oe_structure_website_sale_cart_1"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-xl-4" id="o_cart_summary">
+                                <t t-call="website_sale.short_cart_summary"/>
+                                <div class="d-xl-none mt8">
+                                    <a role="button" href="/shop" class="btn btn-secondary mb32">
+                                        <span class="fa fa-chevron-left" />
+                                        Continue<span class="d-none d-md-inline"> Shopping</span>
+                                    </a>
+                                    <a role="button" t-if="website_sale_order and website_sale_order.website_order_line" class="btn btn-primary float-right" href="/shop/checkout?express=1">
+                                        <span class="">Process Checkout</span>
+                                        <span class="fa fa-chevron-right" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="oe_structure" id="oe_structure_website_sale_cart_2"/>
+            </div>
+                </xpath>
+         </template>
+         <template id="process_checkout_2" inherit_id="website_sale.short_cart_summary">
+            <xpath expr="//div[hasclass('card-body')]" position="replace">
+                <div class="card-body">
+                    <h4 class="d-none d-xl-block">Order Total</h4>
+                    <hr class="d-none d-xl-block"/>
+                    <div>
+                        <t t-call="website_sale.total">
+                            <t t-set="no_rowspan" t-value="1"/>
+                        </t>
+                        <a role="button" t-if="website_sale_order and website_sale_order.website_order_line" class="btn btn-secondary float-right d-none d-xl-inline-block" href="/shop/checkout?express=1">
+                            <span>تقـديـم طلـب</span>
+                        </a>
+                    </div>
+                </div>
+            </xpath>
+         </template>
+        <template id="address_form"
+                inherit_id="website_sale.address"
+                priority="30">
+            <xpath expr="//div[@id='wrap']" position="replace">
+                <div id="wrap">
+                <div class="container oe_website_sale py-2">
+                    <div class="row">
+                        <div class="col-12">
+                            <t t-call="website_sale.wizard_checkout">
+                                <t t-set="step" t-value="20" />
+                            </t>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-xl-auto order-xl-2 d-none d-xl-block">
+                            <t t-call="website_sale.cart_summary">
+                                <t t-set="hide_coupon">True</t>
+                                <t t-set="redirect" t-valuef="/shop/address"/>
+                            </t>
+                        </div>
+                        <div class="col-12 col-xl order-xl-1 oe_cart">
+                            <div>
+                                <t t-if="mode == ('new', 'billing')">
+                                    <h2 class="o_page_header mt8">Your Address
+                                        <small> or </small>
+                                        <a role="button" href='/web/login?redirect=/shop/checkout' class='btn btn-primary' style="margin-top: -11px">Log In</a>
+                                    </h2>
+                                </t>
+                                <t t-if="mode == ('edit', 'billing')">
+                                    <h2 class="o_page_header mt8">Your Address</h2>
+                                </t>
+                                <t t-if="mode[1] == 'shipping'">
+                                    <h2 class="o_page_header mt8">Shipping Address </h2>
+                                </t>
+                                <t t-if="partner_id == website_sale_order.partner_shipping_id.id == website_sale_order.partner_invoice_id.id">
+                                    <div class="alert alert-warning" role="alert" t-if="not only_services">
+                                        <h4 class="alert-heading">Be aware!</h4>
+                                        <p  groups="sale.group_delivery_invoice_address">
+                                            You are editing your <b>billing and shipping</b> addresses at the same time!<br/>
+                                            If you want to modify your shipping address, create a <a href='/shop/address'>new address</a>.
+                                        </p>
+                                    </div>
+                                </t>
+                                <t t-if="error" t-foreach="error.get('error_message', [])" t-as="err">
+                                    <h5 class="text-danger" t-esc="err" />
+                                </t>
+                                <form action="/shop/address" method="post" class="checkout_autoformat">
+                                    <div class="form-row">
+                                        <div t-attf-class="form-group #{error.get('name') and 'o_has_error' or ''} col-lg-12 div_name">
+                                            <label class="col-form-label" for="name">Name</label>
+                                            <input type="text" name="name" t-attf-class="form-control #{error.get('name') and 'is-invalid' or ''}"
+                                                   t-att-value="'name' in checkout and checkout['name']" />
+                                        </div>
+                                        <div class="w-100"/>
+                                        <t t-if="mode[1] == 'billing'">
+                                            <div t-attf-class="form-group #{error.get('email') and 'o_has_error' or ''} col-lg-6" id="div_email">
+                                                <label class="col-form-label" for="email">Email</label>
+                                                <input type="email" name="email" t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}" t-att-value="'email' in checkout and checkout['email']" />
+                                            </div>
+                                        </t>
+                                        <div t-attf-class="form-group #{error.get('phone') and 'o_has_error' or ''} col-lg-6" id="div_phone">
+                                            <label class="col-form-label" for="phone">Phone</label>
+                                            <input type="tel" name="phone" t-attf-class="form-control #{error.get('phone') and 'is-invalid' or ''}" t-att-value="'phone' in checkout and checkout['phone']" />
+                                        </div>
+                                        <div class="w-100"/>
+                                        <div t-attf-class="form-group #{error.get('country_id') and 'o_has_error' or ''} col-lg-6 div_country">
+                                            <label class="col-form-label" for="country_id">Country</label>
+                                            <select id="country_id" name="country_id" t-attf-class="form-control #{error.get('country_id') and 'is-invalid' or ''}" t-att-mode="mode[1]">
+                                                <option value="">Country...</option>
+                                                <t t-foreach="countries" t-as="c">
+                                                    <option t-att-value="c.id" t-att-selected="c.id == (country and country.id or -1)">
+                                                        <t t-esc="c.name" />
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                        <div t-attf-class="form-group #{error.get('state_id') and 'o_has_error' or ''} col-lg-6 div_state" t-att-style="(not country or not country.state_ids) and 'display: none'">
+                                            <label class="col-form-label" for="state_id">State / Province</label>
+                                            <select name="state_id" t-attf-class="form-control #{error.get('state_id')  and 'is-invalid' or ''}" data-init="1">
+                                                <option value="">State / Province...</option>
+                                                <t t-foreach="country_states" t-as="s">
+                                                    <option t-att-value="s.id" t-att-selected="s.id == ('state_id' in checkout and country and checkout['state_id'] != '' and int(checkout['state_id']))">
+                                                        <t t-esc="s.name" />
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                        <div class="w-100"/>
+                                        <div t-attf-class="form-group #{error.get('street') and 'o_has_error' or ''} col-lg-12 div_street">
+                                            <label class="col-form-label" for="street">Street <span class="d-none d-md-inline"> and Number</span></label>
+                                            <input type="text" name="street" t-attf-class="form-control #{error.get('street') and 'is-invalid' or ''}" t-att-value="'street' in checkout and checkout['street']" />
+                                        </div>
+                                        <div t-attf-class="form-group #{error.get('street2') and 'o_has_error' or ''} col-lg-12 div_street2">
+                                            <label class="col-form-label label-optional" for="street2">Street 2</label>
+                                            <input type="text" name="street2" t-attf-class="form-control #{error.get('street2') and 'is-invalid' or ''}"
+                                                   t-att-value="'street2' in checkout and checkout['street2']" />
+                                        </div>
+                                        <div class="w-100"/>
+                                        <t t-set='zip_city' t-value='country and [x for x in country.get_address_fields() if x in ["zip", "city"]] or ["city", "zip"]'/>
+                                        <t t-if="'zip' in zip_city and zip_city.index('zip') &lt; zip_city.index('city')">
+                                            <div t-attf-class="form-group #{error.get('zip') and 'o_has_error' or ''} col-md-4 div_zip">
+                                                <label class="col-form-label label-optional" for="zip">Zip Code</label>
+                                                <input type="text" name="zip" t-attf-class="form-control #{error.get('zip') and 'is-invalid' or ''}"
+                                                       t-att-value="'zip' in checkout and checkout['zip']" />
+                                            </div>
+                                        </t>
+                                        <div t-attf-class="form-group #{error.get('city') and 'o_has_error' or ''} col-md-8 div_city">
+                                            <label class="col-form-label" for="city">City</label>
+                                            <input type="text" name="city" t-attf-class="form-control #{error.get('city') and 'is-invalid' or ''}" t-att-value="'city' in checkout and checkout['city']" />
+                                        </div>
+                                        <t t-if="'zip' in zip_city and zip_city.index('zip') &gt; zip_city.index('city')">
+                                            <div>
+                                                <label class="col-form-label label-optional" for="zip">Zip Code</label>
+                                                <input type="text" name="zip"  t-attf-class="form-control #{error.get('zip') and 'is-invalid' or ''}"
+                                                       t-att-value="'zip' in checkout and checkout['zip']" />
+                                            </div>
+                                        </t>
+
+
+                                        <div class="w-100"/>
+                                        <t t-if="mode == ('new', 'billing') and not only_services">
+                                            <div class="col-lg-12">
+                                                <div class="checkbox">
+                                                  <label>
+                                                    <input type="checkbox" id='shipping_use_same' class="mr8" name='use_same' value="1" checked='checked'/>Ship to the same address
+                                                    <span class='ship_to_other text-muted' style="display: none">&amp;nbsp;(<i>Your shipping address will be requested later) </i></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </div>
+
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                                    <input type="hidden" name="submitted" value="1" />
+                                    <input type="hidden" name="partner_id" t-att-value="partner_id or '0'" />
+                                    <input type="hidden" name="callback" t-att-value="callback" />
+                                    <!-- Example -->
+                                    <input type="hidden" name="field_required" t-att-value="'phone,name'" />
+
+
+                                    <div class="d-flex justify-content-between">
+                                        <a role="button" t-att-href="mode == ('new', 'billing') and '/shop/cart' or '/shop/checkout'" class="btn btn-secondary mb32">
+                                            <i class="fa fa-chevron-left"/>
+                                            <span>Back</span>
+                                        </a>
+                                        <a role="button" href="#" class="btn btn-primary mb32 a-submit a-submit-disable a-submit-loading">
+                                            <span>Next</span>
+                                            <i class="fa fa-chevron-right"/>
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </xpath>
+
+
+            </template>
+        <template id="assets_frontend" inherit_id="website.assets_frontend"
+                  name="website_sale_product_configurator assets frontend">
+            <xpath expr="script[last()]" position="after">
+                <script type="text/javascript" src="/website_custom/static/src/js/website_sale.js"></script>
+            </xpath>
+        </template>
+
+
+<!--          <template id="offer" inherit_id="portal.portal_sidebar">-->
+<!--             <xpath expr="//div[hasclass('o_portal_sidebar')]" position="before">-->
+<!--                 <select style="width:250px;" class="offer" id="offer" name="offer">-->
+<!--                     <t t-foreach="offer" t-as="offer">-->
+<!--                         <option t-att-value="offer.get('id')" value="Doe"><span t-esc="offer.offer"></span></option>-->
+<!--                     </t>-->
+<!--                 </select>-->
+<!--             </xpath>-->
+<!--        </template>-->
+
+
+
+
+
+
+
+
+    </data>
+</odoo>

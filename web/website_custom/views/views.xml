@@ -1,0 +1,105 @@
+<odoo>
+    <data>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="product_template_product_form_custom" model="ir.ui.view">
+            <field name="name">product.template.product.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='barcode']" position="after">
+                    <!-- Add your fields or attributes here -->
+                    <field name="product_brand_id" invisible="1"/>
+                    <field name="financial_institution" invisible="1"/>
+                </xpath>
+
+            </field>
+        </record>
+
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="sale_order_form_custom" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <header>
+                    <button name="set_progress" string="Progress"  type="object" class="oe_highlight" attrs="{'invisible':[('state','=','progress')]}"/>
+                    <button name="set_approved" string="Approved"  type="object" class="oe_highlight"  attrs="{'invisible':[('state','=','approved')]}"/>
+                    <button name="set_reject" string="Reject"  type="object" class="oe_highlight"  attrs="{'invisible':[('state','=','reject')]}" />
+                </header>
+
+                <xpath expr="//form/sheet/notebook/page[1]/field[@name='order_line']/tree/field[@name='product_id']"
+                       position="after">
+                    <field name="product_brand_id" invisible="1"/>
+                    <field name="financial_institution" invisible="1"/>
+                </xpath>
+                <notebook>
+                    <page string="Installment">
+                        <group>
+                            <field name="product_brand_ids"/>
+<!--                            <field name="financial_institutions" invisible="0"/>-->
+                            <field name="offer" domain="[('order_id', '=', name)]"/>
+
+
+                        </group>
+
+                    </page>
+                </notebook>
+
+
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="qardy_installment_action_window">
+            <field name="name">qardy Installment</field>
+            <field name="res_model">website.product.brand</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Installment" id="qardy_installment_menu_1_list" parent="sale.menu_sales_config"
+                action="qardy_installment_action_window"/>
+
+
+         <record id="sale_order_offer_form_custom" model="ir.ui.view">
+            <field name="name">sale_order_offer</field>
+            <field name="model">sale_order_offer</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="value"/>
+                    <field name="order_id"/>
+                </tree>
+
+            </field>
+        </record>
+        <record id="sale_order_offer_form_custom_form" model="ir.ui.view">
+            <field name="name">sale_order_offer</field>
+            <field name="model">sale_order_offer</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="value"/>
+                            <field name="order_id"/>
+                            <field name="partner_id"/>
+                        </group>
+                    </sheet>
+
+                </form>
+
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="sale_order_offer_action_window">
+            <field name="name">offers</field>
+            <field name="res_model">sale_order_offer</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="offers" id="sale_order_offer_menu_1_list" parent="sale.menu_sales_config"
+                action="sale_order_offer_action_window"/>
+
+
+    </data>
+</odoo>

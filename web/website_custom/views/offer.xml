@@ -1,0 +1,87 @@
+<odoo>
+    <record id="menu_openacademy_main" model="website.menu">
+        <field name="name">Offers</field>
+        <field name="url"/>
+        <field name="parent_id" search="[('parent_id', '=', False), ('website_id', '=', 1)]"/>
+        <field name="sequence" type="int">10</field>
+        <field name="website_id" ref="website.default_website"/>
+        </record>
+    <record id="menu_openacademy_courses" model="website.menu">
+        <field name="name">Offer</field>
+        <field name="url">/academy/offers/</field>
+        <field name="parent_id" ref="website_custom.menu_openacademy_main"/>
+        <field name="sequence" type="int">10</field>
+        <field name="website_id" ref="website.default_website"/>
+    </record>
+    <template id="portal_my_home_menu_course" name="Portal layout : courses menu entries" inherit_id="portal.portal_breadcrumbs" priority="20">
+         <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'course'" t-attf-class="breadcrumb-item #{'active ' if not course else ''}">
+            <a t-if="course" t-attf-href="/academy/courses?{{ keep_query() }}">Offers</a>
+            <t t-else="">Offers</t>
+            </li>
+            <li t-if="course" class="breadcrumb-item active">
+            <t t-esc="course.name.name"/>
+            </li>
+        </xpath>
+    </template>
+    <template id="portal_openacademy_courses" name="Courses">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+            <t t-set="title">Offers</t>
+            </t>
+            <t t-if="not courses">
+            <p>There are currently no offers available.</p>
+            </t>
+           <t t-if="courses" t-call="portal.portal_table">
+           <thead>
+              <tr class="active">
+                    <th>Name</th>
+                    <th class="text-right">value</th>
+                    <th class="text-right">Quotation</th>
+              </tr>
+           </thead>
+           <t t-foreach="courses" t-as="course">
+                     <tr>
+                        <td>
+                        <a t-attf-href="/academy/{{ slug(course) }}">
+                        <t t-esc="course.name.name"/>
+                        </a>
+                        </td>
+                        <td class="text-right">
+                        <span t-field="course.value"/>
+                        </td>
+                        <td class="text-right">
+                        <span t-field="course.order_id"/>
+                        </td>
+                     </tr>
+                </t>
+                </t>
+        </t>
+    </template>
+    <template id="portal_openacademy_courses1" name="Courses1">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+            <t t-set="title">Offers</t>
+               thanks for accept your offer
+            </t>
+        </t>
+    </template>
+    <template id="portal_my_home_sale_offer" name="Show Quotations / Sales Orders" customize_show="True" inherit_id="portal.portal_my_home" priority="20">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Offers</t>
+                <t t-set="url" t-value="'/academy/offers/'"/>
+            </t>
+        </xpath>
+    </template>
+
+
+
+
+
+
+
+
+</odoo>
